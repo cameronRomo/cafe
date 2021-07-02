@@ -22,9 +22,23 @@ const updateReservations = (reservation) => {
     .then(response => response.json())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
-  }
+}
+
+const deleteReservation = (id) => {
+  var requestOptions = {
+    method: 'DELETE',
+    redirect: 'follow',
+  };
+  
+  fetch(`http://localhost:3001/api/v1/reservations/${id}`, requestOptions)
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
+}
+
 
 export {
   getReservationData,
-  updateReservations
+  updateReservations,
+  deleteReservation
 }
