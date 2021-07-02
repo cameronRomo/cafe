@@ -12,12 +12,14 @@ const getReservationData = () => {
 const updateReservations = (reservation) => {
   var requestOptions = {
     method: 'POST',
-    redirect: 'follow',
+    headers: {
+      "Content-Type": "application/json"
+    },
     body: JSON.stringify(reservation)
   };
 
   fetch("http://localhost:3001/api/v1/reservations", requestOptions)
-    .then(response => response.text())
+    .then(response => response.json())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
   }
