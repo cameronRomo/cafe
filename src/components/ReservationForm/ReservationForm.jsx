@@ -7,10 +7,10 @@ class ReservationForm extends Component {
   constructor() {
     super();
     this.state = { 
-      name: '',
-      date: '',
-      time: '',
-      number: ''
+      name: "",
+      date: "",
+      time: "",
+      number: 0
     }
   }
 
@@ -24,18 +24,23 @@ class ReservationForm extends Component {
 
   handleClearInputs = () => {
     this.setState({
-      name: '',
-      date: '',
-      time: '',
-      number: 0
+      name: "",
+      date: "",
+      time: "",
+      number: 0,
     })
   }
 
   handleSubmit = (event) => {
     event.preventDefault();
     const newReservation = {
-      ...this.state
+      name: this.state.name,
+      date: this.state.date,
+      time: this.state.time,
+      number: Number(this.state.number)
     }
+    console.log('HI!');
+    console.log(newReservation);
     this.addReservation(newReservation);
     this.handleClearInputs();
   }
@@ -72,7 +77,7 @@ class ReservationForm extends Component {
           value={ this.state.number }
           onChange={ event => this.handleInput(event)}
         />
-        <button className='submit-btn'>Submit Reservation</button>
+        <button onClick={ event => this.handleSubmit(event) } className='submit-btn'>Submit Reservation</button>
       </form>
      );
   }
