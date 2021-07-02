@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import { Link, Route } from 'react-router-dom';
 
 import { updateReservations } from '../../services/apiCalls';
 import './ReservationForm.css'
+import Reservations from '../Reservations/Reservations';
 
 class ReservationForm extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = { 
       name: "",
       date: "",
@@ -47,38 +49,42 @@ class ReservationForm extends Component {
 
   render() { 
     return ( 
-      <form className='form-container'>
-        <h3>Reservation Details:</h3>
-        <input 
-          type='text'
-          placeholder='Reservation Name'
-          name='name'
-          value={ this.state.name }
-          onChange={ event => this.handleInput(event)}
-        />
-        <input 
-          type='text'
-          placeholder='Date (mm/dd)'
-          name='date'
-          value={ this.state.date }
-          onChange={ event => this.handleInput(event) }
-        />
-        <input 
-          type='text'
-          placeholder='Time'
-          name='time'
-          value={ this.state.time }
-          onChange={ event => this.handleInput(event)}
-        />
-        <input 
-          type='number'
-          placeholder='Number of Guests'
-          name='number'
-          value={ this.state.number }
-          onChange={ event => this.handleInput(event)}
-        />
-        <button onClick={ event => this.handleSubmit(event) } className='submit-btn'>Submit Reservation</button>
-      </form>
+      <>
+        <Link to='/reservations' className='back-btn' >Back</Link>
+        <Route path='/reservations' component={ Reservations } />
+        <form className='form-container'>
+          <h3>Reservation Details:</h3>
+          <input 
+            type='text'
+            placeholder='Reservation Name'
+            name='name'
+            value={ this.state.name }
+            onChange={ event => this.handleInput(event)}
+          />
+          <input 
+            type='text'
+            placeholder='Date (mm/dd)'
+            name='date'
+            value={ this.state.date }
+            onChange={ event => this.handleInput(event) }
+          />
+          <input 
+            type='text'
+            placeholder='Time'
+            name='time'
+            value={ this.state.time }
+            onChange={ event => this.handleInput(event)}
+          />
+          <input 
+            type='number'
+            placeholder='Number of Guests'
+            name='number'
+            value={ this.state.number }
+            onChange={ event => this.handleInput(event)}
+          />
+          <button onClick={ event => this.handleSubmit(event) } className='submit-btn'>Submit Reservation</button>
+        </form>
+      </>
      );
   }
 }
