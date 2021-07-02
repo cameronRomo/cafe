@@ -20,7 +20,6 @@ const updateReservations = (reservation) => {
 
   fetch("http://localhost:3001/api/v1/reservations", requestOptions)
     .then(response => response.json())
-    .then(result => console.log(result))
     .catch(error => console.log('error', error));
 }
 
@@ -31,8 +30,7 @@ const deleteReservation = (id) => {
   };
   
   fetch(`http://localhost:3001/api/v1/reservations/${id}`, requestOptions)
-    .then(response => response.text())
-    .then(result => console.log(result))
+    .then(response => response.json())
     .catch(error => console.log('error', error));
 }
 
