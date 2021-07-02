@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import './Reservations.css';
-import { getReservationData } from '../../services/apiCalls';
+import { getReservationData, deleteReservation } from '../../services/apiCalls';
 import Card from '../Card/Card';
 
 class Reservations extends Component {
@@ -17,6 +17,14 @@ class Reservations extends Component {
     .then(reservations => this.setState({ upcomingReservations: reservations }))
   }
 
+  handleDelete = async (deprecatedReservationId) => {
+    const remainingReservations = this.state.upcomingReservations.filter(reservation => reservation.id !== deprecatedReservationId);
+    this.setState({ upcomingReservations: remainingReservations })
+
+    await deleteReservation(deprecatedReservationId);
+    console.log(deprecatedReservationId);
+  }
+
   render() { 
     const reservationCards = this.state.upcomingReservations.map(reservation => {
       return (
@@ -27,6 +35,7 @@ class Reservations extends Component {
           date={ reservation.date }
           time={ reservation.time }
           number={ reservation.number }
+          onDelete={ this.handleDelete }
         />
       )
     })
