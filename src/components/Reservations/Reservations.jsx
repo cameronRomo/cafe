@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { Link, Route } from 'react-router-dom';
 
 import './Reservations.css';
 import { getReservationData, deleteReservation } from '../../services/apiCalls';
 import Card from '../Card/Card';
+import ReservationForm from '../ReservationForm/ReservationForm';
 
 class Reservations extends Component {
   constructor() {
@@ -22,7 +24,6 @@ class Reservations extends Component {
     this.setState({ upcomingReservations: remainingReservations })
 
     await deleteReservation(deprecatedReservationId);
-    console.log(deprecatedReservationId);
   }
 
   render() { 
@@ -40,9 +41,13 @@ class Reservations extends Component {
       )
     })
     return (  
-      <section className='reservations-container' >
-        { reservationCards }
-      </section>
+      <>
+        <Link to='/reservation-form' className='add-reservation-btn' >Add a reservation</Link>
+        <Route path='/reservation-form' component={ ReservationForm }/>
+        <section className='reservations-container' >
+          { reservationCards }
+        </section>
+      </>
     );
   }
 }
