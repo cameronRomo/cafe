@@ -41,8 +41,7 @@ class ReservationForm extends Component {
       time: this.state.time,
       number: Number(this.state.number)
     }
-    console.log('HI!');
-    console.log(newReservation);
+    
     this.addReservation(newReservation);
     this.handleClearInputs();
   }
