@@ -6,3 +6,11 @@
   font-family: "Roboto";
   /* box-sizing: border-box; */
 }
+
+.delete-reservation-btn {
+  background-color: tomato;
+  margin: 0px;
+  font-size: 12px;
+  border-radius: 1em;
+  box-shadow: 2px 2px;
+}
