@@ -1,6 +1,6 @@
 .reservations-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 4em 20em;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 1em 6em;
   padding: 2em;
 }
