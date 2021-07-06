@@ -1,7 +1,7 @@
 .card {
   background-color: bisque;
   border: 3px solid black;
-  padding: 10px;
+  padding: 0em 1em;
   border-radius: 1em;
   font-family: "Roboto";
   /* box-sizing: border-box; */
@@ -9,7 +9,7 @@
 
 .delete-reservation-btn {
   background-color: tomato;
-  margin: 0px;
+  margin: 0em 0em 1em;
   font-size: 12px;
   border-radius: 1em;
   box-shadow: 2px 2px;
