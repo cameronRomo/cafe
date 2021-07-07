@@ -6,7 +6,7 @@
   align-items: center;
   background-image: url("./assets/cafe-img.jpeg");
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: cover;
 }
 
 .app-title {
