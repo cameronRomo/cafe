@@ -15,14 +15,15 @@ class Reservations extends Component {
     super();
     this.state = { 
       upcomingReservations: [],
+      totalReservations: 0,
       currentPage: 1,
-      pageSize: 4,
+      pageSize: 8,
      }
   }
 
   componentDidMount = async () => {
     await getReservationData()
-    .then(reservations => this.setState({ upcomingReservations: reservations }))
+    .then(reservations => this.setState({ upcomingReservations: reservations, totalReservations: reservations.length }))
   }
 
   handleDelete = async (deprecatedReservationId) => {
@@ -32,44 +33,50 @@ class Reservations extends Component {
     await deleteReservation(deprecatedReservationId);
   }
 
-  handlePageChange = (page) => {
-    this.setState({ currentPage: page })
-  }
+  // handlePageChange = (page) => {
+  //   this.setState({ currentPage: page })
+  // }
 
-  handleSort = sortColumn => {
-    this.setState({ sortColumn })
-  }
+  // handleSort = sortColumn => {
+  //   this.setState({ sortColumn })
+  // }
 
-  getPageData = () => {
-    const {
-      pageSize,
-      currentPage,
-      sortColumn,
-      reservations: allReservations
-    } = this.state;
+  // getPageData = () => {
+  //   const {
+  //     pageSize,
+  //     currentPage,
+  //     sortColumn,
+  //     reservations: allReservations
+  //   } = this.state;
 
-    const reservations = paginate(currentPage, pageSize)
+  //   const reservations = paginate(currentPage, pageSize)
 
-    return { 
-      totalCount: reservations.length,
-      data: reservations
-    }    
-  }
+  //   return { 
+  //     totalCount: reservations.length,
+  //     data: reservations
+  //   }    
+  // }
 
   render() { 
 
-    const { length: count} = this.state.upcomingReservations;
-    const {
-      pageSize,
-      currentPage,
-      sortColumn
-    } = this.state;
+    // const { length: count} = this.state.upcomingReservations;
+    // const {
+    //   pageSize,
+    //   currentPage,
+    //   sortColumn
+    // } = this.state;
 
-    if (count === 0) return <p>There are currently no reservations in the database.</p>
+    // if (count === 0) return <p>There are currently no reservations in the database.</p>
 
-    const { totalCount, data: reservations } = this.getPageData()
+    // const { totalCount, data: reservations } = this.getPageData()
 
-    const reservationCards = this.state.upcomingReservations.map(reservation => {
+    const indexOfLastReservation = this.state.currentPage * this.state.pageSize;
+    const indexOfFirstReservation = indexOfLastReservation - this.state.pageSize;
+    const currentReservations = this.state.upcomingReservations.slice(indexOfFirstReservation, indexOfLastReservation)
+
+    const paginate = pageNumber => this.setState({ currentPage: pageNumber });
+
+    const reservationCards = currentReservations.map(reservation => {
       return (
         <Card 
           id={ reservation.id }
@@ -86,10 +93,11 @@ class Reservations extends Component {
       <>
         <Link to='/reservation-form' className='add-reservation-btn' >Add a reservation</Link>
         <Route path='/reservation-form' component={ ReservationForm }/>
-        {/* <section className='reservations-container' >
+        <section className='reservations-container' >
           { reservationCards }
-        </section> */}
-        <ReservationsTable 
+        </section>
+        <Pagination pageSize={this.state.pageSize} totalReservations={this.state.totalReservations} paginate={ paginate } />
+        {/* <ReservationsTable 
           reservations={ reservations }
           onSort={ this.handleSort }
           sortColumn={ sortColumn }
@@ -99,7 +107,7 @@ class Reservations extends Component {
           pageSize={ pageSize }
           onPageChange={ this.handlePageChange }
           currentPage={ currentPage }
-        />
+        /> */}
       </>
     );
   }
