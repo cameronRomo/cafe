@@ -7,8 +7,6 @@ const Pagination = ({ pageSize, totalReservations, paginate }) => {
   for (let i = 1; i <= Math.ceil(totalReservations / pageSize); i++) {
     pageNumbers.push(i);
   }
-  
-  console.log(pageNumbers);
 
   return ( 
     <nav>
