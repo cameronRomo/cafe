@@ -52,7 +52,7 @@ class ReservationForm extends Component {
         <Link to='/reservations' className='back-btn' >Back</Link>
         <Route path='/reservations' component={ Reservations } />
         <form className='form-container'>
-          <h3>Reservation Details:</h3>
+          <h3 className='reservation-form-header'>Reservation Details:</h3>
           <input 
             type='text'
             placeholder='Reservation Name'
