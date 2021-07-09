@@ -53,34 +53,60 @@ class ReservationForm extends Component {
         <Route path='/reservations' component={ Reservations } />
         <form className='form-container'>
           <h3 className='reservation-form-header'>Reservation Details:</h3>
-          <input 
-            type='text'
-            placeholder='Reservation Name'
-            name='name'
-            value={ this.state.name }
-            onChange={ event => this.handleInput(event)}
-          />
-          <input 
-            type='text'
-            placeholder='Date (mm/dd)'
-            name='date'
-            value={ this.state.date }
-            onChange={ event => this.handleInput(event) }
-          />
-          <input 
-            type='text'
-            placeholder='Time'
-            name='time'
-            value={ this.state.time }
-            onChange={ event => this.handleInput(event)}
-          />
-          <input 
-            type='number'
-            placeholder='Number of Guests'
-            name='number'
-            value={ this.state.number }
-            onChange={ event => this.handleInput(event)}
-          />
+          <div className='form-group'>
+            <label>Name:</label>
+            <input 
+              type='text'
+              placeholder='First Name'
+              name='name'
+              value={ this.state.name }
+              onChange={ event => this.handleInput(event)}
+            />
+          </div>
+          <div className='form-group'>
+            <label>Date:</label>
+            <input 
+              type='text'
+              placeholder='mm/dd'
+              name='date'
+              value={ this.state.date }
+              onChange={ event => this.handleInput(event) }
+            />
+          </div>
+          <div className='form-group'>
+            <label>Time:</label>
+            <input 
+              type='text'
+              placeholder='00:00'
+              name='time'
+              value={ this.state.time }
+              onChange={ event => this.handleInput(event)}
+            />
+          </div>
+          <div className='form-group'>
+            <label>Number of Guests</label>
+            <select
+              // multiple
+              className='form-control' 
+              type='number'
+              placeholder='Number of Guests'
+              name='number'
+              value={ this.state.number }
+              onChange={ event => this.handleInput(event)}
+            >
+              <option>0</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+              <option>9</option>
+              <option>10</option>
+            </select>
+          </div>
           <button onClick={ event => this.handleSubmit(event) } className='submit-btn'>Submit Reservation</button>
         </form>
       </>
