@@ -1,6 +1,30 @@
 .reservations-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 1em 6em;
+  grid-gap: 3em 3em;
   padding: 2em;
+}
+
+@media screen and (max-width: 1270px) {
+  .reservations-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2em 4em;
+  }
+}
+
+@media screen and (max-width: 725px) {
+  .reservations-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 2em 4em;
+  }
+}
+
+@media screen and (max-width: 555px) {
+  .reservations-container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 2em 3em;
+  }
 }
