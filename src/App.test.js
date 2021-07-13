@@ -20,4 +20,11 @@ describe('App', () => {
     })
     expect(header).toBeInTheDocument();
   })
+
+  it('should display a button to add reservations', () => {
+    const addReservationBtn = screen.getByRole('link', {
+      name: /add a reservation/i
+    })
+    expect(addReservationBtn).toBeInTheDocument();
+  })
 })
