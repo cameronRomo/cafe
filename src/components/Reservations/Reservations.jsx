@@ -21,6 +21,7 @@ class Reservations extends Component {
   componentDidMount = async () => {
     await getReservationData()
     .then(reservations => this.setState({ upcomingReservations: reservations, totalReservations: reservations.length }))
+    .catch(err => console.log(err))
   }
 
   handleDelete = async (deprecatedReservationId) => {
