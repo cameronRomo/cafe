@@ -23,7 +23,9 @@ describe('Reservation Card', () => {
 
   it('should render a reservation card with a name, date, time, number of guests, and delete button', async () => {
     const reservationName = await waitFor(() => screen.getByText(/Name: Christie/i));
+    const reservationDate = await waitFor(() => screen.getByText(/date: 12\/29/i));
 
     expect(reservationName).toBeInTheDocument();
+    expect(reservationDate).toBeInTheDocument();
   })
 })
