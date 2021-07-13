@@ -4,7 +4,7 @@ import '@testing-library/jest-dom';
 import App from './App';
 import { MemoryRouter } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
-import Pagination from './components/common/Pagination';
+
 
 describe('App', () => {
   beforeEach(() => {
