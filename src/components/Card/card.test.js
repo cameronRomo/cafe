@@ -3,10 +3,10 @@ import { render, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Card from './Card';
 import { MemoryRouter } from 'react-router-dom';
-import userEvent from '@testing-library/user-event';
 
 describe('Reservation Card', () => {
   beforeEach(() => {
+
     render(
       <MemoryRouter>
         <Card
